@@ -1,0 +1,74 @@
+/*
+ * In about:config, affect false to xpinstall.signatures.required to avoid signing the addon
+ */
+
+/*
+ * Run firefox with a specific profile
+ */
+/path/to/firefox -P profile_name
+
+/*
+ * In fathom.json (and fathom-dev.json when using the development version)
+ */
+ "baseline" : {
+     /* the first value define the time (in seconds) between each capture of data, the smaller it is, the higher the CPU load will go up */
+     "intervals" : [9, 600, 3600, 21600],
+     /* rand alter the intervals value everytime a timer is set, 0 allow steady measurement */
+     "rand" : 0,
+     /* ... other properties ... */
+ }
+
+/*
+ * To retrieve more information about cookies,
+ * see https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsICookieManager2#getCookiesFromHost()
+ * we are actually calling countCookiesFromHost() (in pagestatsapi.js)
+ * but we can retrieve every cookie with its Host name
+ */
+
+/*
+ * If you are curious about the CPU load (1min, 5min, 15min)
+ * you can check http://www.teamquest.com/import/pdfs/whitepaper/ldavg1.pdf
+ * to have a better understanding of what it really means
+ */
+
+/*
+ * for performance statistics
+ * see https://www.w3.org/TR/navigation-timing/ for the main request
+ * and https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry for subrequest
+ * once it is implemented, it'll be best to use https://www.w3.org/TR/navigation-timing-2/
+ * performance.getEntriesByType("navigation")[0] (or window.performance.getEntriesByType("navigation")[0])
+ * for stats about the main request, it will replace window.performance.timing's unix timestamp
+ * by milliseconds accurate timing (just like any other ressources)
+ */
+
+/*********************************DEBUGGING************************************/
+
+/*
+ * generate a new XPI addon file
+ * see https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm#Command_reference
+ */
+cd /path/to/fathom_folder/
+jpm xpi
+
+/*
+ * If you ran an intermediary version of the addon on a profile,
+ * be sure to remove the database (/path/to/profile/fathom/baseline.sqlite)
+ */
+
+/*
+ * In package.json,
+ * adding -dev to the version number enable the maximum level of verbosity.
+ * See fathom.js ss.storage['devmode'] for more information.
+ * This will ease the debugging process
+ */
+"version": "2.0.12-dev",
+
+/*
+ * Run an addon without generating an XPI file
+ * --debug is optional, it start a remote console that is way better than log inside a terminal
+ * (no display limit and details about objects by clicking on them)
+ * this will create a temporary profile that is stored in /tmp/
+ * so if you are looking for the database, it's there during the execution
+ */
+cd /path/to/fathom_folder/
+jpm run -b path/to/firefox -p profile_name --debug

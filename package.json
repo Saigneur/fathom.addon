@@ -6,7 +6,7 @@
   "homepage": "https://muse.inria.fr/fathom",
   "author": "MUSE Inria Paris-Rocquencourt <muse.fathom@inria.fr>",
   "contributors": [
-    "Anna-Kaisa Pietilainen",  
+    "Anna-Kaisa Pietilainen",
     "Stéphane Archer",
     "Mohan Dhawan",
     "Renata Teixeira",
@@ -14,10 +14,11 @@
     "Justin Samuel",
     "Nick Weaver",
     "Mark Allman",
-    "Vern Paxson"
+    "Vern Paxson",
+    "Quentin Rouy"
   ],
   "license": "MIT",
-  "version": "2.0.11",
+  "version": "2.0.12-dev",
   "repository": {
     "type": "git",
     "url": "https://github.com/inria-muse/fathom.addon.git"
