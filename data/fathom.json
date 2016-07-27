@@ -29,17 +29,17 @@
     },
 
     "baseline" : {
-        "intervals" : [120, 600, 3600, 21600],
-        "rand" : 30,
+        "intervals" : [9, 600, 3600, 21600],
+        "rand" : 0,
         "max_rows" : [1000, 1600, 1000, 1600],
-        "ping_opts" : { 
-            "count" : 10, 
+        "ping_opts" : {
+            "count" : 10,
             "timeout" : 1,
-            "interval" : 0.5 
+            "interval" : 0.5
         },
         "tr_freq" : 10,
         "tr_opts" : {
-            "count" : 3, 
+            "count" : 3,
             "timeout" : 3,
             "maxttl" : 20
         },
@@ -50,17 +50,17 @@
         "perf" : {
             "enable" : true,
             "p_ping" : 0.33,
-            "ping_opts" : { 
-                "count" : 10, 
+            "ping_opts" : {
+                "count" : 10,
                 "timeout" : 1,
-                "interval" : 0.5 
-            },            
+                "interval" : 0.5
+            },
             "p_traceroute" : 0.5,
             "tr_opts" : {
-                "count" : 3, 
+                "count" : 3,
                 "timeout" : 3,
                 "maxttl" : 20
-            }            
+            }
         },
         "whitelist" : [
             "google.*",
@@ -108,10 +108,10 @@
             "netflix.com",
             "dailymotion.com",
             "doubleclick.net",
-            "gstatic.com", 
-            "akamaihd.net", 
-            "licnd.com", 
-            "dmcdn.net"  
+            "gstatic.com",
+            "akamaihd.net",
+            "licnd.com",
+            "dmcdn.net"
         ]
     },
 
